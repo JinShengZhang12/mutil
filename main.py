@@ -4,6 +4,7 @@ import re
 from typing import Any, Dict, List, Optional, Tuple
 
 import gradio as gr
+from dotenv import load_dotenv
 from openai import OpenAI
 
 from knowledge_base import LESSON_KB
@@ -23,6 +24,8 @@ from state_manager import (
 DEFAULT_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://api.deepseek.com")
 DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "deepseek-chat")
 SYSTEM_ROLE = "你是一个严格遵守JSON输出格式的教学辅助智能体。"
+
+load_dotenv()
 
 
 def _get_api_key() -> str:
@@ -452,4 +455,6 @@ with gr.Blocks(title="学生科学推理能力辅助系统") as demo:
 
 
 if __name__ == "__main__":
-    demo.launch()
+    server_name = os.getenv("GRADIO_SERVER_NAME", "0.0.0.0")
+    server_port = int(os.getenv("PORT", os.getenv("GRADIO_SERVER_PORT", "7860")))
+    demo.launch(server_name=server_name, server_port=server_port)
