@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>学生科学推理能力辅助系统</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>三智能体协同的学生科学推理能力辅助系统</h1>
+      <p class="sub">教学主题：杠杆平衡与多物体力矩叠加</p>
+
+      <section class="card">
+        <h2>配置</h2>
+        <p>默认读取 <code>web/config.js</code> 中的 API 参数；若缺失将启用本地规则评分。</p>
+      </section>
+
+      <section class="card">
+        <h2>学生答题区</h2>
+        <div class="row">
+          <label>学生ID（组号+姓名）</label>
+          <input id="studentId" placeholder="例如：3张三" />
+          <button id="startBtn">开始答题</button>
+          <button id="clearBtn" class="ghost">清空</button>
+        </div>
+
+        <div id="chat" class="chat"></div>
+
+        <div class="row">
+          <input id="answerInput" placeholder="请在此输入你的分析过程" />
+          <button id="sendBtn">发送</button>
+        </div>
+
+        <p id="status" class="status">未开始</p>
+      </section>
+
+      <section class="card">
+        <h2>教师日志区（浏览器本地）</h2>
+        <button id="loadLogsBtn" class="ghost">读取日志</button>
+        <pre id="logsBox" class="logs"></pre>
+      </section>
+    </main>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
